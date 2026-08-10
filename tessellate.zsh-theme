@@ -36,12 +36,12 @@ tessellate_prompt() {
     local normal="%{$reset_color%}"
     
     local VIRTUAL_ENV_DIR=""
-    local CURRENT_DIR="$(__tilde_path $(__pwd))"
+    local CURRENT_DIR="$(__tilde_path "$(__pwd)")"
     local GIT_BRANCH="$(_git_branch_name)"
     
     # Handle virtual environment
     if [[ -n "$VIRTUAL_ENV" ]]; then
-        VIRTUAL_ENV_DIR="$(__tilde_path $(dirname $VIRTUAL_ENV))"
+        VIRTUAL_ENV_DIR="$(__tilde_path "$(dirname "$VIRTUAL_ENV")")"
         CURRENT_DIR="${CURRENT_DIR#$VIRTUAL_ENV_DIR}"
         CURRENT_DIR="${blue}${VIRTUAL_ENV_DIR}${normal}${CURRENT_DIR}"
     fi
